@@ -1,0 +1,48 @@
+ALGORITHM sum_of_overlapping_elements
+VAR
+    set1,set2:array_of_integer[5]
+    i,j:integer
+    sum:integer:=0;
+    common:string:='';
+BEGIN
+    set1 := {12,13,6,10};
+    set2 := {13, 10, 16, 15};
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+        FOR j FROM 0 TO set2.length-1 STEP 1  DO
+            IF (set1[i] = set2[j]) THEN
+                sum:= sum + set1[i];
+                common := common + set1[i];
+            END_IF    
+       END_FOR
+    END_FOR
+    Write("The result is",sum)
+    Write("Common elements are",common)
+END
+
+// the 2 solution
+
+ALGORITHM sum_of_overlapping_elements2
+VAR
+    htab : HASH_TABLE<CHAR,INTEGER>;
+    set1,set2:array_of_integer[5]
+    i,j:integer
+    sum,count:integer:=1;
+BEGIN
+   Read(set1);
+   Read(set2);
+   FOR i FROM 0 TO set1.length -1 STEP 1  DO
+       IF (htab.lookup(set1[i]) = htab.lookup(set2[i])) THEN
+           count := htab.get(set1[i]);
+           htab.insert(set1[i],count+1);
+       END_IF
+   END_FOR
+   
+   FOR i FROM 0 TO set1.length -1 STEP 1  DO
+       IF (htab.get(set1[i]) = htab.get(set2[i])) THEN
+           sum := set1[i] + set2[i];
+           BREAK;
+       END_IF
+   END_FOR
+   Write("The result is",sum)
+   Write("Common elements are",htab)
+END

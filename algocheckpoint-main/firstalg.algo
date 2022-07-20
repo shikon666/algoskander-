@@ -1,0 +1,24 @@
+
+  ALGORITHM check_point_algo1
+VAR 
+ chaine:STRING;
+  i,nbr,nbre:INTEGER;
+  write('give a sentense')
+ read(chaine)
+ write('the length of your sentense is', Length(chaine))
+ nb:=1
+ for i := 1 to Length(chaine) do 
+ if chaine[i][1]:=' ' then 
+ nb:=nb+1
+ END_IF 
+ END_FOR
+ write('The number of words in the sentence is ',nb)
+ nbre:=0
+ FOR i FROM 1 TO length(chaine) do
+     IF (chaine[i][1]:='a')or(chaine[i][1]:='e')or(chaine[i][1]:='u')or(chaine[i][1]:='y')or(chaine[i][1]:='o')or(chaine[i][1]:='i')then
+  nbre:=nbre+1
+  END_IF
+ END_FOR
+ write('The number of vowels in the sentence',nbre)
+ END
+ 

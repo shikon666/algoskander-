@@ -1,0 +1,42 @@
+ALGORITHM HashAlgorithm
+VAR
+    h:HASH-TABLE<INTEGER,INTEGER>;
+    set1 : ARRAY_OF INTEGER[N1] ;
+    set2: ARRAY_OF INTEGER[N2] ;
+    value1 :boolean := false;
+    value2 :boolean := false;
+    N1,N2 :integer;
+    sumDiff, sumEgal :integer := 0;
+    i,j :integer;
+BEGIN
+    Write("saisir la taille des deux tableaux")
+    Read(N1, N2)
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+        FOR j FROM 0 TO set2.length-1 STEP 1  DO
+            IF (set1[i] == set2[j]) THEN
+                value1 = false;
+                value2 = false;
+            ELSE IF (set1[i]<> set2[j]) THEN
+                value1 = true;
+                value2 = false;
+            ELSE IF (set2[j]<>set1[i]) THEN
+                value2 = true;
+                value1 = false; 
+            END_IF
+            h.inset(set1[i],1);
+                IF (c.lookup(set2[j])==true) THEN
+                    (c.insert(set2[j],2)
+                        ELSE
+                            c.insert(set2[j],1)
+                        END_IF
+                END_IF
+                IF (c.get(set1[i])==set2[j] and value1 ==false and value2 == false) THEN
+                    sumEgal = sumEgal +set1[i]*2;
+                ELSE IF ((c.get(set1[i]) <> set2[j]) and value1 == true and value2 == false) THEN
+                        sumDiff = sumDiff + set1[i];
+                ELSE IF ((c.get(set2[j])<> set1[i])  and value1 == false and value2 == true) THEN
+                        sumDiff = sumDiff + set2 [j];
+                END_IF
+    Write("La somme des elements egaux est",sumEgal)
+    Write("La somme des elements differents est",sumDiff)
+END
